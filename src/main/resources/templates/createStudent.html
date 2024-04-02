@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>        
+<head>
+<meta charset="UTF-8">
+<meta name = "author" content = "NeoPhenon(courney)">
+<meta name = "languages" content = "Thymeleaf HTML CSS(bootstrap) Java">
+<title>Student Management System </title>
+</head>
+<style>
+    body{
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+    .card{
+        max-width:500px;
+        border-radius: 5px;
+        margin:0 auto;
+        margin-top:20px;
+        padding:10px;
+        border: 1px solid hsl(0, 15%, 78%);
+        box-shadow: 1px 1px 4px hsla(0, 11%, 78%, 0.808);
+      
+    }
+    .card-title{
+        display:inline-block;
+        font-weight: bold;
+        font-family:sans-serif;
+        color:hsl(160, 75%, 55%);
+    }
+</style>
+<body>
+
+    <div class="container">  
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 p-3">
+        <a href = "#" class = "navbar-brand">Student Management System </a>
+
+        <button class = "navbar-toggler" type = "button" data-bs-target = "#collapsibleNavbar" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapsibleNavbar">
+            <span class = "navbar-toggler-icon"></span>
+        </button>
+        <div class = "navbar-collapse collapse " id = "collapsibleNavbar">
+            <ul class = "navbar-nav" >
+                <li class="nav-item">
+                    <a th:href="@{/students}" class = "nav-link">Student Management</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        <div class="row">
+            <div class="col card ">
+                <h1 class = " card-title text-center">Create New Student</h1>
+                <div class="card-body">
+                    <form th:action="@{/students}"  method = "get" th:object="${student}">
+                     <input type="hidden" placeholder = "id" th:field="*{student_id}">
+                        <div class="form-group">
+                            <label for="student_name" class = "form-label fw-bold" aria-label = "student_name">Student Name:</label>
+                            <input type="text" class = "form-control" id = "student_name" name = "student_name" th:field="*{student_name}" >
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="email" class = "form-label fw-bold" aria-label = "email">Student Email:</label>
+                            <input type="email" class = "form-control" id = "email" name = "email" th:field="*{email}">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="department" class = "form-label fw-bold" aria-label = "department">Student Department:</label>
+                            <input type="text" class = "form-control" id = "department" name = "department" th:field="*{department}">
+                        </div>
+                            <button class = "btn btn-primary mt-3" type = "submit">Add Student</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
